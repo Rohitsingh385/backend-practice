@@ -25,6 +25,7 @@ import fs from "fs";
             );
             return response;
         }catch(error){
+            throw new ApiError(400, "Failed to upload avatar to Cloudinary");
             fs.unlinkSync(localFilePath) // remove the locally saved  temporary file as the as the upload operation got failed
             return null;
         }
